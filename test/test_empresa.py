@@ -36,6 +36,14 @@ class TestEmpresa(unittest.TestCase):
         self.assertEqual(len(ambev.projetos), 1)
         self.assertEqual(ambev.projetos[0].nome, "Jornada")
 
+    def testAdicionaJornadaAmbev(self):
+        jorge = Funcionario("Jorge", "123")
+        hawa = Projeto("Hawa", jorge)
+        ambev = Empresa("Ambev")
+        ambev.adicionaProjeto(hawa)
+        self.assertEqual(len(ambev.projetos), 1)
+        self.assertEqual(ambev.projetos[0].nome, "Hawa")
+
 
 
     
