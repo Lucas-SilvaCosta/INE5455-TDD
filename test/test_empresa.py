@@ -2,6 +2,7 @@ import unittest
 
 from src.funcionario import Funcionario
 from src.empresa import Empresa
+from src.projeto import Projeto
 
 class TestEmpresa(unittest.TestCase):
     
@@ -26,6 +27,16 @@ class TestEmpresa(unittest.TestCase):
         ford.adicionaFuncionario(matheus)
         self.assertEqual(len(ford.funcionarios), 1)
         self.assertEqual(ford.funcionarios[0].cpf, "456")
+
+    def testAdicionaJornadaAmbev(self):
+        jorge = Funcionario("Jorge", "123")
+        jornada = Projeto("Jornada", jorge)
+        ambev = Empresa("Ambev")
+        ambev.adicionaProjeto(jornada)
+        self.assertEqual(len(ambev.projetos), 1)
+        self.assertEqual(ambev.projetos[0].nome, "Jornada")
+
+
 
     
 if __name__ == '__main__':
