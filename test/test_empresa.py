@@ -17,7 +17,8 @@ class TestEmpresa(unittest.TestCase):
         jorge = Funcionario("Jorge", "123")
         ambev = Empresa("Ambev")
         ambev.adicionaFuncionario(jorge)
-        self.assertListEqual([jorge], ambev.funcionarios)
+        self.assertEqual(len(ambev.funcionarios), 1)
+        self.assertEqual(ambev.funcionarios[0].cpf, "123")
 
     
 if __name__ == '__main__':
