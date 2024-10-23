@@ -20,6 +20,13 @@ class TestEmpresa(unittest.TestCase):
         self.assertEqual(len(ambev.funcionarios), 1)
         self.assertEqual(ambev.funcionarios[0].cpf, "123")
 
+    def testAdicionaMatheusFord(self):
+        matheus = Funcionario("Matheus", "456")
+        ford = Empresa("Ford")
+        ford.adicionaFuncionario(matheus)
+        self.assertEqual(len(ford.funcionarios), 1)
+        self.assertEqual(ford.funcionarios[0].cpf, "456")
+
     
 if __name__ == '__main__':
     unittest.main()

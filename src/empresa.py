@@ -1,4 +1,4 @@
-from funcionario import Funcionario
+from src.funcionario import Funcionario
 
 class Empresa:
     def __init__(self, nome):
