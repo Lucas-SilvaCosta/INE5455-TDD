@@ -6,4 +6,4 @@ class Empresa:
         self.funcionarios = []
 
     def adicionaFuncionario(self, funcionario):
-        self.funcionarios.append(Funcionario("Jorge", "123"))
+        self.funcionarios.append(funcionario)
