@@ -11,7 +11,14 @@ class TestEmpresa(unittest.TestCase):
     
     def testCriaFord(self):
         ford = Empresa("Ford")
-        self.assertEqual("Ford", ford.nome)    
+        self.assertEqual("Ford", ford.nome)
+
+    def testAdicionaJorgeAmbev(self):
+        jorge = Funcionario("Jorge", "123")
+        ambev = Empresa("Ambev")
+        ambev.adicionaFuncionario(jorge)
+        self.assertListEqual([jorge], ambev.funcionarios)
+
     
 if __name__ == '__main__':
     unittest.main()
