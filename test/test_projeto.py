@@ -5,13 +5,18 @@ from src.funcionario import Funcionario
 
 class TestProjeto(unittest.TestCase):
     
-    def setUp(self):
-        self.jorge = Funcionario("Jorge", "123")
-
     def testCriaJornadaJorge(self):
-        jornada = Projeto("Jornada", self.jorge)
+        jorge = Funcionario("Jorge", "123")
+        jornada = Projeto("Jornada", jorge)
         self.assertEqual("Jornada", jornada.nome)
-        self.assertEqual(self.jorge.cpf, jornada.responsavel.cpf)
+        self.assertEqual(jorge.cpf, jornada.responsavel.cpf)
+
+    def testCriaHawaMatheus(self):
+        matheus = Funcionario("Matheus", "456")
+        hawa = Projeto("Hawa", matheus)
+        self.assertEqual("Hawa", hawa.nome)
+        self.assertEqual(matheus.cpf, hawa.responsavel.cpf)
+
     
 if __name__ == '__main__':
     unittest.main()
