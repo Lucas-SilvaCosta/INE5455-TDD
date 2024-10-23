@@ -6,13 +6,13 @@ class TestFuncionario(unittest.TestCase):
     
     def testCriaJorge123(self):
         jorge = Funcionario("Jorge", "123")
-        self.assertEquals("Jorge", jorge.nome)
-        self.assertEquals("123", jorge.cpf)
+        self.assertEqual("Jorge", jorge.nome)
+        self.assertEqual("123", jorge.cpf)
 
     def testCriaMatheus456(self):
         matheus = Funcionario("Matheus", "456")
-        self.assertEquals("Matheus", matheus.nome)
-        self.assertEquals("456", matheus.cpf)
+        self.assertEqual("Matheus", matheus.nome)
+        self.assertEqual("456", matheus.cpf)
 
     
     
