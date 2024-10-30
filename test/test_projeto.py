@@ -1,5 +1,6 @@
 import unittest
 
+from src.ocorrencia import Ocorrencia
 from src.projeto import Projeto
 from src.funcionario import Funcionario
 
@@ -17,13 +18,23 @@ class TestProjeto(unittest.TestCase):
         self.assertEqual("Hawa", hawa.nome)
         self.assertEqual(matheus.cpf, hawa.responsavel.cpf)
 
-    def testAdicionaJorge123(self):
+    def testAdicionaMatheus123(self):
         jorge = Funcionario("Jorge", "123")
         matheus = Funcionario("Matheus", "456")
         hawa = Projeto("Hawa", jorge)
         hawa.adicionaFuncionario(matheus)
         self.assertEqual("Matheus", hawa.funcionarios[0].nome)
         self.assertEqual("456", hawa.funcionarios[0].cpf)
+
+    def testAdicionaMatheus123Repetido(self):
+        jorge = Funcionario("Jorge", "123")
+        matheus = Funcionario("Matheus", "456")
+        hawa = Projeto("Hawa", jorge)
+        hawa.adicionaFuncionario(matheus)
+        hawa.adicionaFuncionario(matheus)
+        self.assertEqual("Matheus", hawa.funcionarios[0].nome)
+        self.assertEqual("456", hawa.funcionarios[0].cpf)
+        self.assertEqual(1, len(hawa.funcionarios))
 
     def testAdicionaMaria789(self):
         jorge = Funcionario("Jorge", "123")
@@ -33,22 +44,18 @@ class TestProjeto(unittest.TestCase):
         self.assertEqual("Maria", hawa.funcionarios[0].nome)
         self.assertEqual("789", hawa.funcionarios[0].cpf)
 
-    def testCriaOcorrenciaJorge123(self):
+    def testAdicionaFuncionariosJornadaJorge123Maria789(self):
         jorge = Funcionario("Jorge", "123")
-        jornada = Projeto("Jornada", jorge)
-        ocorrencia = {"identificador": "Bug 1", "responsavel": jorge, "estado": "Aberta"}
-        jornada.adicionaOcorrencia(ocorrencia)
-        self.assertEqual(ocorrencia["responsavel"].nome, jornada.ocorrencias[0]["responsavel"].nome)
-        self.assertEqual(ocorrencia["identificador"], jornada.ocorrencias[0]["identificador"])
-
-    def testCriaOcorrenciaMatheus(self):
         matheus = Funcionario("Matheus", "456")
-        jornada = Projeto("Jornada", matheus)
-        ocorrencia = {"identificador": "Bug 2", "responsavel": matheus, "estado": "Aberta"}
-        jornada.adicionaOcorrencia(ocorrencia)
-        self.assertEqual(ocorrencia["responsavel"].nome, jornada.ocorrencias[0]["responsavel"].nome)
-        self.assertEqual(ocorrencia["identificador"], jornada.ocorrencias[0]["identificador"])
-
+        maria = Funcionario("Maria", "789")
+        jornada = Projeto("Jornada", jorge)
+        jornada.adicionaFuncionario(matheus)
+        jornada.adicionaFuncionario(maria)
+        self.assertEqual("Matheus", jornada.funcionarios[0].nome)
+        self.assertEqual("456", jornada.funcionarios[0].cpf)
+        self.assertEqual("Maria", jornada.funcionarios[1].nome)
+        self.assertEqual("789", jornada.funcionarios[1].cpf)
+        self.assertEqual(2, len(jornada.funcionarios))
 
 if __name__ == '__main__':
     unittest.main()
