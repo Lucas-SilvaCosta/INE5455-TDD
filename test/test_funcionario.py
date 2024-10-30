@@ -13,7 +13,6 @@ class TestFuncionario(unittest.TestCase):
         matheus = Funcionario("Matheus", "456")
         self.assertEqual("Matheus", matheus.nome)
         self.assertEqual("456", matheus.cpf)
-
     
     
 if __name__ == '__main__':

@@ -8,7 +8,12 @@ class Projeto:
         self.ocorrencias = []
 
     def adicionaFuncionario(self, funcionario):
+        funcionarioFilter = filter(lambda x: x.cpf == funcionario.cpf, self.funcionarios)
+        if len(list(funcionarioFilter)) > 0:
+            return
         self.funcionarios.append(funcionario)
 
     def adicionaOcorrencia(self, ocorrencia):
+        if ocorrencia in self.ocorrencias:
+            return
         self.ocorrencias.append(ocorrencia)

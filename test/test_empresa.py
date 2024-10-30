@@ -4,6 +4,10 @@ from src.funcionario import Funcionario
 from src.empresa import Empresa
 from src.projeto import Projeto
 
+# Adiciona projeto
+# Adiciona funcionarios
+# Adiciona funcionarios em projetos
+# Cria ocorrencia em projetos (max 10)
 class TestEmpresa(unittest.TestCase):
     
     def testCriaAmbev(self):
@@ -43,9 +47,6 @@ class TestEmpresa(unittest.TestCase):
         ambev.adicionaProjeto(hawa)
         self.assertEqual(len(ambev.projetos), 1)
         self.assertEqual(ambev.projetos[0].nome, "Hawa")
-
-
-
     
 if __name__ == '__main__':
     unittest.main()
