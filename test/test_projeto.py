@@ -21,9 +21,17 @@ class TestProjeto(unittest.TestCase):
         jorge = Funcionario("Jorge", "123")
         matheus = Funcionario("Matheus", "456")
         hawa = Projeto("Hawa", jorge)
-        hawa.adicionaFunciona(matheus)
+        hawa.adicionaFuncionario(matheus)
         self.assertEqual("Matheus", hawa.funcionarios[0].nome)
         self.assertEqual("456", hawa.funcionarios[0].cpf)
+
+    def testAdicionaMaria789(self):
+        jorge = Funcionario("Jorge", "123")
+        maria = Funcionario("Maria", "789")
+        hawa = Projeto("Hawa", jorge)
+        hawa.adicionaFuncionario(maria)
+        self.assertEqual("Maria", hawa.funcionarios[0].nome)
+        self.assertEqual("789", hawa.funcionarios[0].cpf)
 
 if __name__ == '__main__':
     unittest.main()
