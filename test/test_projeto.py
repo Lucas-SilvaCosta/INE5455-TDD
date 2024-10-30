@@ -22,6 +22,8 @@ class TestProjeto(unittest.TestCase):
         matheus = Funcionario("Matheus", "456")
         hawa = Projeto("Hawa", jorge)
         hawa.adicionaFunciona(matheus)
+        self.assertEqual("Matheus", hawa.funcionarios[0].nome)
+        self.assertEqual("456", hawa.funcionarios[0].cpf)
 
 if __name__ == '__main__':
     unittest.main()
