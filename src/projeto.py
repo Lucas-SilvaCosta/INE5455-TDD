@@ -7,4 +7,4 @@ class Projeto:
         self.funcionarios = []
 
     def adicionaFuncionario(self, funcionario):
-        self.funcionarios.append(Funcionario("Matheus", "456"))
+        self.funcionarios.append(funcionario)
