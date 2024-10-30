@@ -41,6 +41,14 @@ class TestProjeto(unittest.TestCase):
         self.assertEqual(ocorrencia["responsavel"].nome, jornada.ocorrencias[0]["responsavel"].nome)
         self.assertEqual(ocorrencia["identificador"], jornada.ocorrencias[0]["identificador"])
 
+    def testCriaOcorrenciaMatheus(self):
+        matheus = Funcionario("Matheus", "456")
+        jornada = Projeto("Jornada", matheus)
+        ocorrencia = {"identificador": "Bug 2", "responsavel": matheus, "estado": "Aberta"}
+        jornada.adicionaOcorrencia(ocorrencia)
+        self.assertEqual(ocorrencia["responsavel"].nome, jornada.ocorrencias[0]["responsavel"].nome)
+        self.assertEqual(ocorrencia["identificador"], jornada.ocorrencias[0]["identificador"])
+
 
 if __name__ == '__main__':
     unittest.main()

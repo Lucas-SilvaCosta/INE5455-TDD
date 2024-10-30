@@ -11,4 +11,4 @@ class Projeto:
         self.funcionarios.append(funcionario)
 
     def adicionaOcorrencia(self, ocorrencia):
-        self.ocorrencias.append({"identificador": "Bug 1", "responsavel": Funcionario("Jorge", "123"), "estado": "Aberta"})
+        self.ocorrencias.append(ocorrencia)
