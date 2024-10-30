@@ -33,11 +33,13 @@ class TestProjeto(unittest.TestCase):
         self.assertEqual("Maria", hawa.funcionarios[0].nome)
         self.assertEqual("789", hawa.funcionarios[0].cpf)
 
-    def criaOcorrenciaJorge123(self):
+    def testCriaOcorrenciaJorge123(self):
         jorge = Funcionario("Jorge", "123")
         jornada = Projeto("Jornada", jorge)
         ocorrencia = {"identificador": "Bug 1", "responsavel": jorge, "estado": "Aberta"}
         jornada.adicionaOcorrencia(ocorrencia)
+        self.assertEqual(ocorrencia["responsavel"].nome, jornada.ocorrencias[0]["responsavel"].nome)
+        self.assertEqual(ocorrencia["identificador"], jornada.ocorrencias[0]["identificador"])
 
 
 if __name__ == '__main__':
