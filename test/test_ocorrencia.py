@@ -8,7 +8,7 @@ class TestOcorrencia(unittest.TestCase):
 
     def testCriaOcorrencia(self):
         jorge = Funcionario("Jorge", "123")
-        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", True, "Descricao")
+        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", "Descricao")
         self.assertEqual("Bug 1", ocorrencia.identificador)
         self.assertEqual("Bug", ocorrencia.tipo)
         self.assertEqual(jorge, ocorrencia.responsavel)
@@ -18,9 +18,37 @@ class TestOcorrencia(unittest.TestCase):
 
     def testFechaOcorrenciaBug1(self):
         jorge = Funcionario("Jorge", "123")
-        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", True, "Descricao")
+        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", "Descricao")
         ocorrencia.fechar()
         self.assertEqual(False, ocorrencia.estado)
+
+    def testMudaResponsavelBug1Aberto(self):
+        jorge = Funcionario("Jorge", "123")
+        matheus = Funcionario("Matheus", "456")
+        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", "Descricao")
+        ocorrencia.changeResponsavel(matheus)
+        self.assertEqual(matheus, ocorrencia.responsavel)
+
+    def testMudaResponsavelBug1Fechado(self):
+        jorge = Funcionario("Jorge", "123")
+        matheus = Funcionario("Matheus", "456")
+        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", "Descricao")
+        ocorrencia.fechar()
+        ocorrencia.changeResponsavel(matheus)
+        self.assertEqual(jorge, ocorrencia.responsavel)
+
+    def testMudaPrioridadeBug1Aberto(self):
+        jorge = Funcionario("Jorge", "123")
+        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", "Descricao")
+        ocorrencia.changePrioridade("Alta")
+        self.assertEqual("Alta", ocorrencia.prioridade)
+
+    def testMudaPrioridadelBug1Fechado(self):
+        jorge = Funcionario("Jorge", "123")
+        ocorrencia = Ocorrencia("Bug 1", "Bug", jorge, "Baixa", "Descricao")
+        ocorrencia.fechar()
+        ocorrencia.changePrioridade("Alta")
+        self.assertEqual("Baixa", ocorrencia.prioridade)
 
 if __name__ == '__main__':
     unittest.main()

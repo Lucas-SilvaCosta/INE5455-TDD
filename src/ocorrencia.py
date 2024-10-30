@@ -1,10 +1,10 @@
 class Ocorrencia:
-    def __init__(self, identificador, tipo, responsavel, prioridade, estado, descricao):
+    def __init__(self, identificador, tipo, responsavel, prioridade, descricao):
         self.identificador = identificador
         self.tipo = tipo
         self.responsavel = responsavel
         self.prioridade = prioridade
-        self.estado = estado
+        self.estado = True
         self.descricao = descricao
 
     def changeResponsavel(self, responsavel):
@@ -15,7 +15,7 @@ class Ocorrencia:
     def changePrioridade(self, prioridade):
         if not self.estado:
             return
-        self.responsavel = prioridade
+        self.prioridade = prioridade
 
     def fechar(self):
         self.estado = False
