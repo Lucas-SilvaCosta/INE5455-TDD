@@ -9,12 +9,12 @@ class Ocorrencia:
 
     def changeResponsavel(self, responsavel):
         if not self.estado:
-            return
+            raise RuntimeError("Ocorrência está fechada.")
         self.responsavel = responsavel
 
     def changePrioridade(self, prioridade):
         if not self.estado:
-            return
+            raise RuntimeError("Ocorrência está fechada.")
         self.prioridade = prioridade
 
     def fechar(self):

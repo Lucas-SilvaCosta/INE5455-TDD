@@ -34,8 +34,7 @@ class TestOcorrencia(unittest.TestCase):
         matheus = Funcionario("Matheus", "456")
         ocorrencia = Ocorrencia(1, "Bug", jorge, "Baixa", "Descricao")
         ocorrencia.fechar()
-        ocorrencia.changeResponsavel(matheus)
-        self.assertEqual(jorge, ocorrencia.responsavel)
+        self.assertRaises(RuntimeError, ocorrencia.changeResponsavel, matheus)
 
     def testMudaPrioridadeBug1Aberto(self):
         jorge = Funcionario("Jorge", "123")
@@ -47,8 +46,7 @@ class TestOcorrencia(unittest.TestCase):
         jorge = Funcionario("Jorge", "123")
         ocorrencia = Ocorrencia(1, "Bug", jorge, "Baixa", "Descricao")
         ocorrencia.fechar()
-        ocorrencia.changePrioridade("Alta")
-        self.assertEqual("Baixa", ocorrencia.prioridade)
+        self.assertRaises(RuntimeError, ocorrencia.changePrioridade, "Alta")
 
 if __name__ == '__main__':
     unittest.main()

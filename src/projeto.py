@@ -1,4 +1,3 @@
-from src.funcionario import Funcionario
 
 class Projeto:
     def __init__(self, nome, responsavel):
@@ -18,3 +17,6 @@ class Projeto:
         if len(list(ocorrenciaFilter)) > 0:
             return
         self.ocorrencias.append(ocorrencia)
+
+    def verificaFuncionario(self, funcionario):
+        return len(list(filter(lambda x: x.cpf == funcionario.cpf, self.funcionarios)))
